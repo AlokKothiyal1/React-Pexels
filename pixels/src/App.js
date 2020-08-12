@@ -2,14 +2,54 @@ import React from 'react';
 // import Home from './components/Home'
 // import Photos from './components/Photos'
 import Videos from './components/Videos'
+import Styles from './App.module.css'
 
-function App() {
-  return (
+class App extends React.Component {
+  constructor(props){
+    super(props)
+      this.state ={
 
-    <div>
-      <Videos/>
-    </div>
-  );
+        buttons:true,
+        photos:false,
+        videos:false
+
+      }
+  }
+
+  handleChange = (val)=>{
+    console.log(val)
+    if(val==="photos"){
+      this.setState({photos:true,buttons:false,videos:false})
+    }
+    else if(val==="videos"){
+      this.setState({videos:true,buttons:false,photos:false})
+    }
+   
+  }
+
+  render(){
+    const {buttons,photos,videos}= this.state
+    console.log(this.state)
+      return (    
+        <div>
+          {buttons&&
+
+          <div className={Styles.main}>
+
+            <div className={Styles.Wrapper}>
+                <p> Explore stock photos & videos <br></br>shared by talented creators.</p>
+                <div className={Styles.flexBox}>
+                    <div className={ Styles.btn} onClick={()=>this.handleChange("photos")}>Photos</div>
+                    <div className={ Styles.btn} onClick={()=>this.handleChange("videos")}>Videos</div>
+                </div>
+            </div>
+          </div>
+          }
+
+        {videos && <Videos/>}
+      </div>
+    );
+  }
 }
 
 export default App;

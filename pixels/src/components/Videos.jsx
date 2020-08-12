@@ -1,14 +1,21 @@
 import React from 'react'
 import axios from 'axios'
+import Styles from './Videos.module.css'
 
 class Videos extends React.Component{
     constructor(props){
         super(props)
         this.state ={
             value:"",
-            page_no:2
+            page_no:15,
+            data:"",
+            isOpen: false
         }
     }
+    openModal = ()=> {
+        this.setState({isOpen: true})
+      }
+
     handleChange=(e)=>{
         this.setState({value:e.target.value})
     }
@@ -21,15 +28,60 @@ class Videos extends React.Component{
                 query:this.state.value,
                 per_page:this.state.page_no
             }
-            }).then(res=>console.log(res))
+            })
+
+            .then(res=>res.data.videos)
+            .then(res=>this.setState({data:res}))
+            .catch(err=>console.log(err))
+    }
+    componentDidMount(){
+        axios.get(`https://api.pexels.com/videos/search`,{
+            headers: {
+              authorization: "563492ad6f917000010000017ac4d10c0e0d4706a292add299fbf410"
+            },
+            params:{
+                query:"engineering",
+                per_page:this.state.page_no
+            }
+            })
+
+            .then(res=>res.data.videos)
+            .then(res=>this.setState({data:res}))
+            .catch(err=>console.log(err))
     }
 
+  
+
     render(){
-       
+        console.log(this.state.data)
+
+        const {data} = this.state
         return(
-            <div>
-                <input type="text" onChange={this.handleChange} value={this.state.value}></input>
-                <input type="button" onClick={this.handleClick} value="Search"></input>
+            
+            <div className={Styles.main}>
+
+                <div className={Styles.input_container}>
+
+                    <h1>Pexels Videos</h1>
+                    <input type="text" onChange={this.handleChange} value={this.state.value} placeholder="Search for Videos"></input>
+                    <button type="button" onClick={this.handleClick} >Search</button>
+                </div>
+
+                <div className={Styles.video_container}>
+
+                    {data!=="" && data.map((item,i)=>(
+
+                        <div key={i}>
+                            <a href={item.video_files[1].link} target="_blank" rel="noopener noreferrer">
+
+                                <img  className={Styles.img} src = {item.video_pictures[2].picture} alt="img">
+                                </img>  
+                                <img className ={ Styles.logo}src='https://image.flaticon.com/icons/svg/3039/3039386.svg' width="50px" alt="img"></img>
+                            </a>
+                        </div>
+                    ))}
+                </div>
+
             </div>
         )
     }
