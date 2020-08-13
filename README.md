@@ -14,8 +14,12 @@
 
 ### This is a web project template based on React.
 
-### To make web development easier and faster, a variety of frequently used functions have been implemented.
-#### This project created for searching the I mages and videos as many as you want.
+#### To make web development easier and faster, a variety of frequently used functions have been implemented.
+#### This project created for searching the Images and videos as many as you want.
+
+If you will see the first landing Page is look like this,
+
+![Image of home page](https://github.com/AlokKothiyal1/React-Pixels/blob/master/screenshots/home_page.png)
 
 
 
