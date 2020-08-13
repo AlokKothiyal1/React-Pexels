@@ -65,6 +65,8 @@ class Videos extends React.Component{
                     <h1>Pexels Videos</h1>
                     <input type="text" onChange={this.handleChange} value={this.state.value} placeholder="Search for Videos"></input>
                     <button type="button" onClick={this.handleClick} >Search</button>
+                    <button type="button" style={{backgroundColor:"#EC407A"}} onClick={()=>this.props.handleChange("buttons")}>Home</button>
+
                 </div>
 
                 <div className={Styles.video_container}>

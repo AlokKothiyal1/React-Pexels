@@ -23,6 +23,9 @@ class App extends React.Component {
     else if(val==="videos"){
       this.setState({videos:true,buttons:false,photos:false})
     }
+    else if(val==="buttons"){
+      this.setState({videos:false,buttons:true,photos:false})
+    }
    
   }
 
@@ -45,8 +48,8 @@ class App extends React.Component {
           </div>
           }
 
-        {videos && <Videos/>}
-        {photos && <Photos/>}
+        {videos && <Videos handleChange={this.handleChange}/>}
+        {photos && <Photos handleChange={this.handleChange}/>}
       </div>
     );
   }

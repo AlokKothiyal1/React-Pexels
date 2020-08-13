@@ -48,6 +48,7 @@ class Photos extends React.Component{
   
 
     render(){
+        console.log(this.props)
         console.log(this.state.data)
 
         const {data} = this.state
@@ -60,7 +61,7 @@ class Photos extends React.Component{
                     <h1>Pexels Photos</h1>
                     <input type="text" onChange={this.handleChange} value={this.state.value} placeholder="Search for Photos"></input>
                     <button type="button" onClick={this.handleClick} >Search</button>
-                    <button type="button" style={{backgroundColor:"#EC407A"}}>Home</button>
+                    <button type="button" style={{backgroundColor:"#EC407A"}} onClick={()=>this.props.handleChange("buttons")}>Home</button>
                 </div>
 
 
