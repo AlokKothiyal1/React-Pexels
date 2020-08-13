@@ -1,6 +1,5 @@
 import React from 'react';
-// import Home from './components/Home'
-// import Photos from './components/Photos'
+import Photos from './components/Photos'
 import Videos from './components/Videos'
 import Styles from './App.module.css'
 
@@ -47,6 +46,7 @@ class App extends React.Component {
           }
 
         {videos && <Videos/>}
+        {photos && <Photos/>}
       </div>
     );
   }
