@@ -21,6 +21,16 @@ If you will see the first landing Page is look like this,
 
 ![Image of home page](https://github.com/AlokKothiyal1/React-Pixels/blob/master/screenshots/home_page.png)
 
+Here on the home page, you have two buttons, 
+1. Images
+2. Videos
+
+If you will click on Images then you will get the page like this:
+![Image of image page](https://github.com/AlokKothiyal1/React-Pixels/blob/master/screenshots/Image_search_tiger.png)
+
+Here, there is a search bar you can search any image you want to search
+On hovering bottom of the Image you will get the name of photographer as you can see below
+![Image of image page](https://github.com/AlokKothiyal1/React-Pixels/blob/master/screenshots/mouse_hover_on_image.png)
 
 
 
