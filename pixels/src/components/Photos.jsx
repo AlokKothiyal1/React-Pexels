@@ -60,6 +60,7 @@ class Photos extends React.Component{
                     <h1>Pexels Photos</h1>
                     <input type="text" onChange={this.handleChange} value={this.state.value} placeholder="Search for Photos"></input>
                     <button type="button" onClick={this.handleClick} >Search</button>
+                    <button type="button" style={{backgroundColor:"#EC407A"}}>Home</button>
                 </div>
 
 
