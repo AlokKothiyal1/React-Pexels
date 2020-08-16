@@ -1,15 +1,17 @@
 import React from 'react'
 import axios from 'axios'
 import Styles from './Photos.module.css'
+import Buttons from './Buttons'
 
 class Photos extends React.Component{
     constructor(props){
         super(props)
         this.state ={
             value:"",
-            page_no:15,
+            page_no:20,
             data:"",
-            isOpen: false
+            isOpen: false,
+            page:'1'
         }
     }
     
@@ -19,7 +21,7 @@ class Photos extends React.Component{
     handleClick =()=>{
         axios.get(`https://api.pexels.com/v1/search`,{
             headers: {
-              authorization: "563492ad6f917000010000017345b49ef98e449ca53af9e16c0acc5c"
+              authorization: "563492ad6f91700001000001a4beb2375b2b461fb9c852f78e1f8df5"
             },
             params:{
                 query:this.state.value,
@@ -34,7 +36,7 @@ class Photos extends React.Component{
     componentDidMount(){
         axios.get(`https://api.pexels.com/v1/search`,{
             headers: {
-              authorization: "563492ad6f917000010000017345b49ef98e449ca53af9e16c0acc5c"
+              authorization: "563492ad6f91700001000001a4beb2375b2b461fb9c852f78e1f8df5"
             },
             params:{
                 query:"gaming",
@@ -45,9 +47,9 @@ class Photos extends React.Component{
             .then(res=>this.setState({data:res})).catch(err=>console.log(err))
     }
 
-  
 
     render(){
+
         console.log(this.props)
         console.log(this.state.data)
 
@@ -64,12 +66,13 @@ class Photos extends React.Component{
                     <button type="button" style={{backgroundColor:"#EC407A"}} onClick={()=>this.props.handleChange("buttons")}>Home</button>
                 </div>
 
+                <Buttons page={this.state.page} page_no={this.state.page_no}/>
 
                 <div className={Styles.photo_container}>
 
                     <div className={Styles.flexContainer}>
                         {data!=="" && data.map((item,i)=> {
-                            if(i<=4){
+                            if(i<=Math.floor(this.state.page_no/3)){
                                 return (
                                     
                                     <div key={i} className={Styles.img}>
@@ -91,7 +94,7 @@ class Photos extends React.Component{
 
                     <div className={Styles.flexContainer}>
                         {data!=="" && data.map((item,i)=> {
-                            if(i>4&&i<=9){
+                            if(i>Math.floor(this.state.page_no/3)&&i<=2*Math.floor(this.state.page_no/3)){
                                 return (
                                     <div key={i}>
                                         <a href={item.src.original} target="_blank" rel="noopener noreferrer">
@@ -112,7 +115,7 @@ class Photos extends React.Component{
 
                     <div className={Styles.flexContainer}>
                         {data!=="" && data.map((item,i)=> {
-                            if(i>9){
+                            if(i>2*Math.floor(this.state.page_no/3)){
                                 return (
                                     
                                     <div key={i}>

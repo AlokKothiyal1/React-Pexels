@@ -22,7 +22,7 @@ class Videos extends React.Component{
     handleClick =()=>{
         axios.get(`https://api.pexels.com/videos/search`,{
             headers: {
-              authorization: "563492ad6f917000010000017ac4d10c0e0d4706a292add299fbf410"
+              authorization: "563492ad6f91700001000001a4beb2375b2b461fb9c852f78e1f8df5"
             },
             params:{
                 query:this.state.value,
@@ -37,7 +37,7 @@ class Videos extends React.Component{
     componentDidMount(){
         axios.get(`https://api.pexels.com/videos/search`,{
             headers: {
-              authorization: "563492ad6f917000010000017ac4d10c0e0d4706a292add299fbf410"
+              authorization: "563492ad6f91700001000001a4beb2375b2b461fb9c852f78e1f8df5"
             },
             params:{
                 query:"engineering",
