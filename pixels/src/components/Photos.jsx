@@ -8,7 +8,7 @@ class Photos extends React.Component{
         super(props)
         this.state ={
             value:"",
-            page_no:20,
+            page_no:40,
             data:"",
             isOpen: false,
             page:'1'
